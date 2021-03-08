@@ -52,6 +52,11 @@ header{
 	box-shadow: 2px 2px 3px grey;
 }
 
+#footContact:hover{
+	background-color: #EB6D81;
+	cursor: pointer;
+}
+
 #footLogo{
 	margin-top: 30px;
 	text-shadow: 2px 2px 5px gray;
@@ -76,6 +81,7 @@ footer{
 		width: 100%;
 		}
 
+
 .custom-toggler .navbar-toggler-icon {
 
  	 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
@@ -98,6 +104,16 @@ footer{
 	#bannerHome{
 		display: none;
 	}
+	
+	#footLogo{
+		margin-top: 0px;
+	}
+	
+	#navFoot{
+		margin-top: 60px;
+		margin-bottom: 50px;
+	}
+	
 	
 }
 
