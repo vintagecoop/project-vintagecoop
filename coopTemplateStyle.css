@@ -97,6 +97,10 @@ footer{
 
 @media  screen and (max-width: 576px){
 	
+	#headLogo{
+		height: 150px;
+	}
+	
 	#bannerHomeMobile{
 		display: block;
 	}
