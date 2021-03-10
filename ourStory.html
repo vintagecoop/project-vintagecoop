@@ -15,7 +15,12 @@
 <style>
 body {
 font-size: 1.3em;
-}	
+}
+	
+#heading2  {
+ color: white; 
+ padding-top: 3.5em;
+}
 	
 h1 {
 text-align: center;
@@ -30,6 +35,14 @@ text-align: center;
 hr {
   border-top: 1px solid black;
   width: 70%;
+}
+	
+@media  screen and (max-width: 576px){
+
+#heading2  {
+ padding-top: 2.5em;
+}
+
 }
 
 </style>
@@ -67,7 +80,7 @@ hr {
 </header>
 <body>
 <div class="col-sm-12" style="background: linear-gradient(rgba(20,20,20, .5), rgba(20,20,20, .5)), url(images/about2.jpg);height:50vh;min-height:20px; background-size:auto; background-position: 42% 85%; background-repeat: no-repeat;">
-<h1 style="color: white; padding-top: 130px;">ABOUT US</h1></div>
+<h1 id="heading2">ABOUT US</h1></div>
 
 <div class="container">
 <div class="container-fluid" style="max-width: 800px;">
