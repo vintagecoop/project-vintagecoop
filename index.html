@@ -44,11 +44,17 @@ hr {
     left: 0;
     width: 100%;
 }
+	
+#heading {
+ padding-top: 3.5em;
+ color: white; 
+ text-shadow: 1px 1px black;
+}
 
 main {
     margin-left: auto;
     margin-right: auto;
-    width: 310px;
+    width: 80%;
     background: black;
     overflow: hidden;
 }
@@ -100,6 +106,18 @@ color: white;
 color: #8C8481;
 text-shadow: 1px 1px black;
 }
+	
+@media  screen and (max-width: 576px){
+
+#heading  {
+ padding-top: 0em;
+}
+
+main {
+    width: 100%;
+}
+
+}
 
 </style>
 
@@ -136,7 +154,7 @@ text-shadow: 1px 1px black;
 </header>
 <body>
 <div class="col-sm-12" style="background: linear-gradient(rgba(20,20,20, .5), rgba(20,20,20, .5)), url(images/crop.jpg);height:50vh;min-height:20px; background-size:cover;background-repeat: no-repeat;">
-<h1 style="color: white; padding-top: 2.6em; text-shadow: 1px 1px black;">WELCOME TO VINTAGE COOPERATIVE OF PRAIRIE TRAIL!</h1>
+<h1 id="heading">WELCOME TO VINTAGE COOPERATIVE OF PRAIRIE TRAIL!</h1>
 </div>
 
 <div class="container">
@@ -153,7 +171,7 @@ Vintage Cooperative of Prairie Trail offers a maintenance-free alternative to ho
 
 <div class="col-lg-6 text-center" style="position: relative; padding-top: 15px;">
  <figure><main>
-    <img class="img" src="images/facility-maintenance.jpg" alt="chalkboard reading facility maintenance"  width="310px" height="323px">
+    <img class="img" src="images/facility-maintenance.jpg" alt="chalkboard reading facility maintenance"  width="100%" height="323px">
     </main> <a href="contact.php">
        <div class="caption">
             <h2>CONTACT</h2>
@@ -163,7 +181,7 @@ Vintage Cooperative of Prairie Trail offers a maintenance-free alternative to ho
 
  <div class="col-lg-6 text-center" style="padding-bottom: 10px; position: relative; padding-top: 15px;">
     <figure><main>
-          <img class="img" src="images/home.JPG" alt="vintage cooperatives house" width="310px" height="323px">
+          <img class="img" src="images/home.JPG" alt="vintage cooperatives house" width="100%" height="323px">
           </main><a href="floor-plans.html">
              <div class="caption">
                 <h2>FLOOR PLANS</h2>
@@ -176,7 +194,7 @@ Vintage Cooperative of Prairie Trail offers a maintenance-free alternative to ho
 
  <div class="col-lg-6 text-center" style="position: relative;">
      <figure><main>
-            <img class="img" src="images/elevator.jpeg" alt="open elevator doors" width="310px" height="323px">
+            <img class="img" src="images/elevator.jpeg" alt="open elevator doors" width="100%" height="323px">
             </main><a href="gallery.html">
                <div class="caption">
                   <h2>GALLERY</h2>
@@ -186,7 +204,7 @@ Vintage Cooperative of Prairie Trail offers a maintenance-free alternative to ho
 
  <div class="col-lg-6 text-center" style="padding-bottom: 30px; position: relative;">
     <figure><main>
-           <img class="img" src="images/books.jpg" alt="stack of books"  width="310px" height="323px">
+           <img class="img" src="images/books.jpg" alt="stack of books"  width="100%" height="323px">
            </main><a href="ourStory.html">
               <div class="caption">
                  <h2>ABOUT</h2>
