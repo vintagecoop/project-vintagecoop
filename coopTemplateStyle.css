@@ -18,6 +18,10 @@ header{
 	width: auto;
 }
 
+.active{
+	text-decoration: underline;
+}
+
 
 .nav-link{
 	padding: 3px;
