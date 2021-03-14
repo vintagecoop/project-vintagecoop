@@ -29,6 +29,9 @@ if (isset($_POST['submit'])){
 	$email = $_POST['email'];
 	$phone = $_POST['phone'];
 	if(isset($_POST['reference'])){$reference = $_POST['reference'];}
+	$tourDate = $_POST['tourDate'];
+	if(isset($_POST['tourTime'])){$tourTime = $_POST['tourTime'];}
+	
 	$message = $_POST['message'];
 	
 	//validation
@@ -73,6 +76,24 @@ if (isset($_POST['submit'])){
 			$phoneERR = "Please enter a valid Phone";
 			$validPost = false;
 		}
+	//tour time
+	if(isset($_POST['tourTime'])){
+		$tourTimeERR = "";
+	}
+	else {
+		$tourTimeERR = "Select a Time";
+		$validPost = false;
+	}
+	//tour date
+		$tourDate = filter_var($tourDate);
+		if (validateDate($tourDate)){
+			$tourDateERR = "";
+		}
+		else{
+			//failure to validate
+			$tourDateERR = "Invalid Date";
+			$validPost = false;
+		}
 	//message
 		$message = filter_var($message);
 		if (filter_var($message)){
@@ -85,17 +106,19 @@ if (isset($_POST['submit'])){
 		}
 	//delivery
 		if($validPost){
+			$status = "success";
+			
 			$mail = new ContactForm();
 			$mail->setFirst($firstName);
 			$mail->setLast($lastName);
 			$mail->setEmail($email);
 			$mail->setPhone($phone);
 			$mail->setReference($reference);
+			$mail->setDate($tourDate);
+			$mail->setTime($tourTime);
 			$mail->setMessage($message);
-			$mail->setSubject("Vintage Cooperative Contact Us");
-			$mail->sendContact();
-			
-			$status = "success";
+			$mail->setSubject("Vintage Cooperative Schedule a Tour");
+			$mail->sendTour();
 		}
 		else {
 			$status = "failure";
@@ -185,12 +208,11 @@ function checkBoxes($value){
 			height: 75px;
 			line-height: 75px;
 		}
-		.contactButton {
-			background-color: #A8AC86;
-		}
-		
-		.scheduleButton:hover {
+		.contactButton:hover {
 			cursor: pointer;
+		}
+		.scheduleButton {
+			background-color: #A8AC86;
 		}
 		.tourDate {
 			display: inline;
@@ -210,13 +232,12 @@ function checkBoxes($value){
 			margin: 15px;
 		}
 		.error {
-		text-align: center;
-		color: lightcoral;
-		border-radius: 45px;
-		margin: 5px auto 5px auto;
-		font-weight: bold;
+			text-align: center;
+			color: lightcoral;
+			border-radius: 45px;
+			margin: 5px auto 5px auto;
+			font-weight: bold;
 		}
-		
 		/*Media Queries*/
 		@media only screen and (max-width: 991px){
 			
@@ -316,21 +337,21 @@ function checkBoxes($value){
 
 <body>
 	<div class = "toggleForm" id = "top">
-		<div class= "contactButton">CONTACT US</div><a href = "tour.php#top" class = "navLink"><div class= "scheduleButton">SCHEDULE TOUR</div></a>
+		<a href = "contact.php#top" class = "navLink"><div class= "contactButton">CONTACT US</div></a><div class= "scheduleButton">SCHEDULE TOUR</div>
 	</div>
 	<div id = "contact">
-		<form action = "contact.php#top" method = "post" id = "contactForm">
+		<form action = "tour.php#top" method = "post" id = "scheduleForm">
 			<div class= "row">
 				<div class = "col-lg-1 col-md-3" ></div>
 				<div class = "col-lg-5">
 					<label for = "firstName" class="form-label">First Name*</label><br>
-					<input type = "text" name = "firstName" class = "wide form-control" placeholder= "John" required value ="<?php echo $firstName;?>">
+					<input type = "text" name = "firstName" class = "wide form-control" placeholder = "John" require value ="<?php echo $firstName;?>">
 					<div class = "error"><?php echo $firstNameERR;?></div>
 				</div>
 				<div class = "w-100 d-none"></div>
 				<div class = "col-lg-5">
 					<label for = "lastName" class="form-label">Last Name*</label><br>
-					<input type = "text" name = "lastName" class = "wide form-control" placeholder= "Doe" required value ="<?php echo $lastName;?>">
+					<input type = "text" name = "lastName" class = "wide form-control" placeholder = "Doe" require value ="<?php echo $lastName;?>">
 					<div class = "error"><?php echo $lastNameERR;?></div>
 				</div>
 				<div class = "col-lg-1 col-md-3"></div>
@@ -340,16 +361,16 @@ function checkBoxes($value){
 				<div class = "col-lg-1"></div>
 				<div class = "col-lg-5">
 					<label for = "email" class="form-label">Email*</label><br>
-					<input type = "email" name = "email" class = "wide form-control" placeholder = "example@service.com"required value ="<?php echo $email;?>">
+					<input type = "email" name = "email" class = "wide form-control" placeholder = "example@service.com" require value ="<?php echo $email;?>">
 					<div class = "error"><?php echo $emailERR;?></div>
 				</div>
 				<div class = "col-lg-5">
 					<label for = "phone" class="form-label">Phone ###-###-####</label><br>
-					<input type = "tel" name = "phone" class = "wide form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="###-###-####" value ="<?php echo $phone;?>" >
+					<input type = "text" name = "phone" class = "wide form-control" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="###-###-####"  value ="<?php echo $phone;?>">
 					<div class = "error"><?php echo $phoneERR;?></div>
 				</div>
 				<div class = "col-lg-1"></div>
-			</div>	
+			</div>
 			<div class = "row checkBoxes">
 				<div class = "col-lg-1"></div>
 				<div class= "col-lg-5">
@@ -362,13 +383,34 @@ function checkBoxes($value){
 								<tr><td><input type = "checkbox" name = "reference[]" value = "Other" <?php checkBoxes("Other");?>> Other</td></tr>
 					</table>
 				</div>
+				<div class = "col-lg-5"></div>
 				<div class = "col-lg-1"></div>
+			</div>
+			<h2>Tour Information</h2>
+			<div class = " tourInfo row">
+				<div class =  "col-lg-1"></div>
+				<div class = "col-lg-5">
+					<label for "tourDate" class = "form-label">Select Date: </label><input type = "date" name = "tourDate" class = "tourDate form-control" require  value ="<?php echo $tourDate;?>">
+					<div class = "error"><?php echo $tourDateERR;?></div>
+				</div>
+				<div class = "col-lg-5">
+					<table class = "tourTime">
+						<tr>
+							<td><label for = "tourTime" class = "form-label">Preferred Time:</label></td>
+						</tr>
+						<tr><td><input type = "radio" name = "tourTime" value = "Morning" require <?php if($tourTime == "Morning") { echo 'checked="checked"';} ?>> Morning</td></tr>
+						<tr><td><input type = "radio" name = "tourTime" value = "Afternoon" require <?php if($tourTime == "Afternoon") { echo 'checked="checked"';} ?>> Afternoon</td></tr>
+					</table>
+					<div class = "error"><?php echo $tourTimeERR;?></div>
+				</div>
+				<div class =  "col-lg-1"></div>
+
 			</div>
 			<div class = "row">
 				<div class = "col-lg-1"></div>
 				<div class = "col-lg-10">
-					<label for = "message" class="form-label">Message*</label><br>
-					<textarea name = "message" class = "wide form-control" rows = "5" required><?php echo $message;?></textarea>
+					<label for = "message" class="form-label">Leave a comment or question</label><br>
+					<textarea name = "message" class = "wide form-control" rows = "5"><?php echo $message;?></textarea>
 					<div class = "error"><?php echo $messageERR;?></div>
 				</div>
 				<div class = "col-lg-1"></div>
@@ -380,12 +422,13 @@ function checkBoxes($value){
 			</div>	
 		</form>
 	</div>
+	
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
 		  <div class="modal-body alert-success">
-			<h1 style="text-align: center">Contact Submission Successful</h1>
+			<h1 style="text-align: center">Tour Request Submission Successful</h1>
 			<h2 style="text-align: center">We will follow up with you as soon as possible.</h2>
 		  </div>
 		  <div class="modal-footer alert-success">
@@ -394,7 +437,6 @@ function checkBoxes($value){
 		</div>
 	  </div>
 	</div>
-
 </body>
 <footer>
 	
