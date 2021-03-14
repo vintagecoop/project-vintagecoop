@@ -10,24 +10,26 @@
 			font-size: 1.5em;
 		}
 		.content {
-			width: 80%;
+			width: 85%;
+			margin: 45px auto 45px auto;
 			margin-left: auto;
 			margin-right: auto;
 /*			background-color: antiquewhite;*/
 			text-align: center;
-			padding: 25px;
 		}
 		.floor {
 			padding: 15px;
 
 		}
 		.floor > div {
-			width: 350px;
+			width: 100%;
+			min-width: 225px;
 			height: 300px;
 			background-color: #D6D6D6;
 			box-shadow: 5px 5px 5px gray;
 			margin-left: auto;
 			margin-right: auto;
+			padding: 15px;
 		}
 		.floor table {
 			margin-left: auto;
@@ -35,7 +37,7 @@
 			text-align: left;
 		}
 		.floor-button, .floor-pdf {
-			width: 200px;
+			width: 60%;
 			height: 40px;
 			line-height: 40px;
 			border: 2px gray solid;
@@ -64,21 +66,33 @@
 			.content {
 				width: 100%;
 			}
+			.modal-body img {
+				width: 100%;
+				height: auto;
+			}
 		}
 		@media (min-width: 768px) {
-		  .modal-xl {
-			width: 90%;
-		   max-width:1200px;
+			.modal-xl {
+				width: 90%;
+				max-width:1200px;
 		  }
 		}
-		@media only screen and (max-width: 576px){
+ 
+		
+		@media only screen and (max-width: 767px){
+			.floor > div {
+				width: 70%;
+			}
+/* these styles will make mobile only view pdfs from the floor plan cards
 			.floor-button{
 				display: none;
 			}
 			.floor-pdf {
 				display: inline;
 			}
+*/
 		}
+
 		
 	
 	</style>
@@ -96,12 +110,12 @@
 		<div class="collapse navbar-collapse" id="navbarNav" style="justify-content: center">
 			<ul class="navbar-nav" >
 				<li class="nav-item">
-					<a class="nav-link" href="index.html"><u>Home</u></a>
+					<a class="nav-link" href="index.html">Home</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="ourStory.html">About</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item active">
 					<a class="nav-link" href="floor-plans.html">Floor Plans</a>
 				</li>
 				<li class="nav-item">
@@ -114,9 +128,9 @@
 		</div>
 	</nav>
 	
-	<img id="bannerHome" src="photos/bannerHome2.png" alt="banner photo" width="100%" height="100%">
+	<img id="bannerHome" src="photos/floor-plans.jpeg" alt="banner photo" width="100%" height="100%">
 
-	<img id="bannerHomeMobile" src="photos/bannerHome3.png" alt="banner photo" width="100%" height="100%">
+	<img id="bannerHomeMobile" src="photos/floor-planssmall.jpeg" alt="banner photo" width="100%" height="100%">
 	
 </header>
 <body>
