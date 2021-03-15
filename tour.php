@@ -337,7 +337,7 @@ function checkBoxes($value){
 
 <body>
 	<div class = "toggleForm" id = "top">
-		<a href = "contact.php#top" class = "navLink"><div class= "contactButton">CONTACT US</div></a><div class= "scheduleButton">SCHEDULE TOUR</div>
+		<a href = "contact.php#top" class = "navLink"><div class= "contactButton">CONTACT US</div></a><div class= "scheduleButton active">SCHEDULE TOUR</div>
 	</div>
 	<div id = "contact">
 		<form action = "tour.php#top" method = "post" id = "scheduleForm">
@@ -448,13 +448,15 @@ function checkBoxes($value){
 			<h4><strong>Navigation:</strong></h4>
 			
 			<p>
-				<u>
-					<a class="nav-link" href="index.html"><u>Home</u></a>
-					<a class="nav-link" href="ourStory.html">About</a>
-					<a class="nav-link" href="floor-plans.html">Floor Plans</a>
-					<a class="nav-link" href="gallery.html">Gallery</a>
-					<a class="nav-link" href="contact.php">Contact</a>
-				</u>
+				<div id="divFootNav">
+					<u>
+						<a class="nav-link" href="index.html">Home</a>
+						<a class="nav-link" href="ourStory.html">About</a>
+						<a class="nav-link" href="floor-plans.html">Floor Plans</a>
+						<a class="nav-link" href="gallery.html">Gallery</a>
+						<a class="nav-link" href="contact.php">Contact</a>
+					</u>
+				</div>
 			</p>
 		</div>
 
