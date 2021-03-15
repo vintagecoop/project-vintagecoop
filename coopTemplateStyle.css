@@ -85,6 +85,21 @@ footer{
 		width: 100%;
 		}
 
+#divFootNav{
+	border-radius: 20px;
+	background-color: rgba(168,172,134,0.71);
+	width: 42%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	box-shadow: 2px 2px 3px grey;
+}
+
+#navFoot p{
+	text-shadow: 2px 2px 5px hsla(0,0%,54%,1.00);
+}
+
 
 .custom-toggler .navbar-toggler-icon {
 
@@ -121,6 +136,10 @@ footer{
 		margin-top: 60px;
 		margin-bottom: 50px;
 	}
+	
+	#divFootNav{
+		width: 50%;
+}
 	
 	
 }
